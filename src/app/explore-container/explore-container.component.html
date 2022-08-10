@@ -1,4 +1,21 @@
 <div id="container">
-  <strong>{{ name }}</strong>
-  <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>{{ finishDate }}</ion-card-subtitle>
+      <ion-card-title>Main clock</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div id="timer">
+        <div>{{ time.minutes }}</div>
+        <div>{{ time.seconds }}</div>
+      </div>
+    </ion-card-content>
+    <ion-item>
+      <ion-button fill="solid" slot="start" size="large" (click)="inciar()"
+        >Inciar</ion-button
+      >
+      <ion-button fill="clear" size="large">Pausar</ion-button>
+      <ion-button fill="outline" slot="end" size="large">Reiniciar</ion-button>
+    </ion-item>
+  </ion-card>
 </div>
