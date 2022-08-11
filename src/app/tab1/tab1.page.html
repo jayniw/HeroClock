@@ -1,17 +1,22 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Tab 1 </ion-title>
+    <ion-title> 50 mins </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container
-    [finishDateString]="'2022-08-08 23:00:00'"
-  ></app-explore-container>
+  <div id="container">
+    <app-explore-container
+      [gameTime]="5"
+      [main]="false"
+    ></app-explore-container>
+    <app-explore-container
+      [gameTime]="50"
+      [main]="true"
+    ></app-explore-container>
+    <app-explore-container
+      [gameTime]="5"
+      [main]="false"
+    ></app-explore-container>
+  </div>
 </ion-content>

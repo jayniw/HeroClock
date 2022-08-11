@@ -1,21 +1,45 @@
-<div id="container">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>{{ finishDate }}</ion-card-subtitle>
-      <ion-card-title>Main clock</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <div id="timer">
-        <div>{{ time.minutes }}</div>
-        <div>{{ time.seconds }}</div>
-      </div>
-    </ion-card-content>
-    <ion-item>
-      <ion-button fill="solid" slot="start" size="large" (click)="inciar()"
-        >Inciar</ion-button
-      >
-      <ion-button fill="clear" size="large">Pausar</ion-button>
-      <ion-button fill="outline" slot="end" size="large">Reiniciar</ion-button>
-    </ion-item>
-  </ion-card>
-</div>
+<ion-card>
+  <ion-card-header *ngIf="main">
+    <ion-card-subtitle>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6">Inicio:{{ startDate | date: "HH:mm:ss" }}</ion-col>
+          <ion-col size="6">Final :{{ finishDate | date: "HH:mm:ss" }}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-subtitle>
+    <ion-card-title>HeroClock</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <div id="timer">
+      <div>{{ time.minutes }}</div>
+      <div>{{ time.seconds }}</div>
+    </div>
+  </ion-card-content>
+  <ion-item>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="6" *ngIf="!runnig && !paused">
+          <ion-button fill="solid" (click)="play()">
+            Inciar<ion-icon slot="start" name="play"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col size="6" *ngIf="runnig && !paused">
+          <ion-button fill="outline" (click)="pause()">
+            Pausar<ion-icon slot="start" name="pause"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col size="6" *ngIf="!runnig && paused">
+          <ion-button fill="outline" (click)="play()">
+            Reanudar<ion-icon slot="start" name="play"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col size="6" *ngIf="runnig || paused">
+          <ion-button fill="clear" (click)="stop()">
+            Detener<ion-icon slot="start" name="stop"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+</ion-card>
