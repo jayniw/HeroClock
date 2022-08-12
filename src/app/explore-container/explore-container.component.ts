@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AlertController } from '@ionic/angular';
 import { interval } from 'rxjs';
 import { map } from 'rxjs/internal/operators/map';
 
@@ -27,7 +26,7 @@ export class ExploreContainerComponent implements OnInit {
   runnig = false;
   paused = false;
 
-  constructor(private alertController: AlertController) {
+  constructor() {
     playAlert.content.fail = ['../assets/fail.mp3'];
     playAlert.content.ring = ['../assets/ring.mp3'];
     playAlert.content.minute = ['../assets/minute.mp3'];
@@ -107,17 +106,17 @@ export class ExploreContainerComponent implements OnInit {
     this.paused = false;
     this.setFinishDate(this.mins, this.segs);
     this.counterTimer$ = this.start().subscribe((_) => {
+      if (this.time.minutes === 1 && this.time.seconds === 0 && !this.main) {
+        playAlert('minute');
+      }
       if (this.time.minutes === 0 && this.time.seconds === 0) {
         this.runnig = false;
         if (this.main) {
-          this.presentAlert('TURNO 0', 'fail');
+          playAlert('fail');
         } else {
-          this.presentAlert('Fin de turno', 'ring');
+          playAlert('ring');
         }
-        this.counterTimer$.unsubscribe();
-      }
-      if (this.time.minutes === 1 && this.time.seconds === 0) {
-        playAlert('minute');
+        this.stop();
       }
     });
   }
@@ -137,14 +136,5 @@ export class ExploreContainerComponent implements OnInit {
     this.counterTimer$.unsubscribe();
     this.setFinishDate(this.gameTime, 0);
     this.updateTime();
-  }
-
-  async presentAlert(mensaje: string, sonido: string) {
-    const alert = await this.alertController.create({
-      message: mensaje,
-      buttons: ['OK'],
-    });
-    playAlert(sonido);
-    await alert.present();
   }
 }

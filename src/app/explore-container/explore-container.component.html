@@ -1,4 +1,4 @@
-<ion-card>
+<ion-card class="card">
   <ion-card-header *ngIf="main">
     <ion-card-subtitle>
       <ion-grid fixed>
@@ -12,30 +12,30 @@
   </ion-card-header>
   <ion-card-content>
     <div id="timer">
-      <div>{{ time.minutes }}</div>
-      <div>{{ time.seconds }}</div>
+      <div>{{ time.minutes | timeMask }}</div>
+      <div>{{ time.seconds | timeMask }}</div>
     </div>
   </ion-card-content>
   <ion-item>
     <ion-grid fixed>
       <ion-row>
         <ion-col size="6" *ngIf="!runnig && !paused">
-          <ion-button fill="solid" (click)="play()">
+          <ion-button fill="outline" (click)="play()" color="success">
             Inciar<ion-icon slot="start" name="play"></ion-icon>
           </ion-button>
         </ion-col>
         <ion-col size="6" *ngIf="runnig && !paused">
-          <ion-button fill="outline" (click)="pause()">
+          <ion-button fill="outline" (click)="pause()" color="warning">
             Pausar<ion-icon slot="start" name="pause"></ion-icon>
           </ion-button>
         </ion-col>
         <ion-col size="6" *ngIf="!runnig && paused">
-          <ion-button fill="outline" (click)="play()">
+          <ion-button fill="outline" (click)="play()" color="warning">
             Reanudar<ion-icon slot="start" name="play"></ion-icon>
           </ion-button>
         </ion-col>
         <ion-col size="6" *ngIf="runnig || paused">
-          <ion-button fill="clear" (click)="stop()">
+          <ion-button fill="outline" (click)="stop()" color="danger">
             Detener<ion-icon slot="start" name="stop"></ion-icon>
           </ion-button>
         </ion-col>

@@ -1,37 +1,10 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-
 #timer {
   font-size: 3em;
   font-weight: 100;
   color: white;
   padding: 15px;
-  color: white;
+  background-color: #c5ced7;
+  border-radius: 15px;
 }
 
 #timer div {
@@ -39,7 +12,12 @@
   min-width: 90px;
   padding: 10px;
   background: #020b43;
-  border-radius: 10px;
+  border-radius: 15px;
   border: 2px solid #030d52;
   margin: 10px;
+}
+
+.card {
+  background-color: #4c5b6b;
+  border-radius: 15px;
 }

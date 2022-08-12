@@ -5,10 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ExploreContainerComponent } from './explore-container.component';
+import { TimeMaskPipe } from '../time-mask.pipe';
 
 @NgModule({
-  imports: [ CommonModule, FormsModule, IonicModule],
-  declarations: [ExploreContainerComponent],
-  exports: [ExploreContainerComponent]
+  imports: [CommonModule, FormsModule, IonicModule],
+  declarations: [ExploreContainerComponent, TimeMaskPipe],
+  exports: [ExploreContainerComponent],
 })
 export class ExploreContainerComponentModule {}
