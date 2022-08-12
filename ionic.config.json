@@ -1,5 +1,7 @@
 {
   "name": "HeroClock",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
