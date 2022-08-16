@@ -1,7 +1,7 @@
 {
   "name": "HeroClock",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
+  "version": "1.0.0",
+  "author": "Jalir Durán Nogales",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
@@ -65,5 +65,5 @@
     "ts-node": "~8.3.0",
     "typescript": "~4.7.3"
   },
-  "description": "An Ionic project"
+  "description": "Timer clock for Heroclix duels"
 }
