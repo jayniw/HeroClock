@@ -1,7 +1,7 @@
 ## Generar apk
 
 ```bash
-cd android && ./gradlew assembleDebug && cd ..
+ionic capacitor copy android && cd android && ./gradlew assembleDebug && cd ..
 ```
 
 ## deploy a gitpages
