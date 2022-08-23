@@ -8,7 +8,6 @@ ion-content {
   font-weight: 100;
   color: white;
   padding: 15px;
-  background-color: #c5ced7;
   border-radius: 15px;
 }
 
@@ -29,4 +28,11 @@ ion-content {
   -webkit-backdrop-filter: blur(2px);
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+ion-button[shape="circle"] {
+  --border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  --ion-color-danger-contrast: #000;
 }

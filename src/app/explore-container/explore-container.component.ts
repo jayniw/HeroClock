@@ -134,7 +134,9 @@ export class ExploreContainerComponent implements OnInit {
     this.runnig = false;
     this.paused = false;
     this.counterTimer$.unsubscribe();
-    this.setFinishDate(this.gameTime, 0);
+    this.mins = this.gameTime;
+    this.segs = 0;
+    this.setFinishDate(this.mins, this.segs);
     this.updateTime();
   }
 }
