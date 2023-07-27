@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { interval } from 'rxjs';
 import { map } from 'rxjs/internal/operators/map';
 
 import * as playAlert from 'alert-sound-notify';
+import { IonModal } from '@ionic/angular';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  @ViewChild(IonModal) modal: IonModal;
+  enableConfig = true;
   //Main clock
   mainTime!: {
     days: number;
@@ -16,7 +19,7 @@ export class AppComponent implements OnInit {
     minutes: number;
     seconds: number;
   };
-  mainMins: number;
+  mainMins = 50;
   mainSegs: number;
   mainStartDate: Date;
   mainFinishDate: Date = new Date();
@@ -28,7 +31,7 @@ export class AppComponent implements OnInit {
     minutes: number;
     seconds: number;
   };
-  playerMins: number;
+  playerMins = 5;
   playerSegs: number;
   playerStartDate: Date;
   playerFinishDate: Date = new Date();
@@ -58,7 +61,6 @@ export class AppComponent implements OnInit {
       minutes: 0,
       seconds: 0,
     };
-    this.mainMins = 50;
     this.mainSegs = 0;
     // Creamos la fecha a partir de los minutos de cada reloj
     this.setMainFinishDate(this.mainMins, this.mainSegs);
@@ -73,7 +75,6 @@ export class AppComponent implements OnInit {
       minutes: 0,
       seconds: 0,
     };
-    this.playerMins = 5;
     this.playerSegs = 0;
     // Creamos la fecha a partir de los minutos de cada reloj
     this.setPlayerFinishDate(this.playerMins, this.playerSegs);
@@ -152,6 +153,7 @@ export class AppComponent implements OnInit {
   playMain() {
     this.runnig = true;
     this.paused = false;
+    this.enableConfig = false;
     //seteamos finishdate de ambos relojes si esta iniciando el juego
     this.setMainFinishDate(this.mainMins, this.mainSegs);
     //creamos el observable
@@ -203,10 +205,29 @@ export class AppComponent implements OnInit {
     this.stopPlayer();
     this.runnig = false;
     this.paused = false;
+    this.enableConfig = true;
   }
 
   stopPlayer() {
     this.pause();
+    this.setPlayerTime();
+  }
+
+  showConfig() {
+    const log = 'show config';
+    console.log(
+      '🚀 ~ file: app.component.ts:215 ~ AppComponent ~ showConfig ~ log:',
+      log
+    );
+  }
+
+  confirmConfig() {
+    this.modal.dismiss([this.mainMins, this.playerMins], 'confirm');
+    console.log(
+      '🚀 ~ file: app.component.ts:225 ~ AppComponent ~ confirmConfig ~ :',
+      [this.mainMins, this.playerMins]
+    );
+    this.setMainTime();
     this.setPlayerTime();
   }
 }

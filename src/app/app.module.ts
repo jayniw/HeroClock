@@ -6,12 +6,17 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
 import { TimeMaskPipe } from './time-mask.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, TimeMaskPipe],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
